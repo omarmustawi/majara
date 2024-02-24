@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* start  toggle theme */
+/* .theme-light {
+  --bg-primary: #f3f6fc;
+  --text-primary: #444746;
+}
+
+.theme-dark {
+  --bg-primary: #444746;
+  --text-primary: #f3f6fc;
+} */
+:root {
+  --light: #f3f6fc;
+  --dark: #444746;
+}
+main .theme-light {
+  background-color: var(--light);
+  color: var(--dark);
+}
+main .theme-dark {
+  background-color: var(--dark);
+  color: var(--light);
+}
+.body-theme-dark{
+  background-color: #1f1f1f !important;
+  color: var(--light);
+}
+.body-theme-light{
+  background-color: #fff !important;
+}
+/* main .hover-text-theme-dark:hover {
+  color: var(--dark);
+} */
+
+/* end  toggle theme */
+
+/* start scroll bar */
+::-webkit-scrollbar {
+  width: 4px !important;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change to desired thumb color */
+}
+
+*::-webkit-scrollbar {
+  width: 4px; /* Adjust the width as desired */
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Change to desired background color */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change to desired thumb color */
+}
+/* end scroll bar */
+
+* {
+  box-sizing: border-box;
+}
+@layer base {
+  body {
+    @apply  w-screen overflow-x-hidden;
+  }
+  .container-sidebar {
+    @apply  fixed w-fit h-screen top-0 p-5 lg:p-3 text-xs  z-20;
+  }
+  .container-sidebar .icon-sidebar {
+    @apply cursor-pointer hover:bg-gray-200;
+  }
+  .btn {
+    @apply py-2 px-8 bg-blue-600 hover:bg-blue-600/50 text-xl text-white rounded-full ; 
+  }
+  .title {
+    @apply text-3xl font-medium lg:text-5xl my-10  mr-4;
+  }
+}
+
+
+/* start  hero section */
+.bg-hero {
+  background-image: url('../images/heroImg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/* end  hero section */
+
