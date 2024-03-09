@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* start  toggle theme */
+:root {
+  /* --light: #f3f6fc; */
+  --light: #f3eaeb;
+  --BG-light: #fcfcfc;
+  /* --dark: #444746; */
+  --dark: #362929;
+}
+
+main .theme-light {
+  background-color: var(--light);
+  color: var(--dark);
+}
+main .theme-dark {
+  background-color: var(--dark);
+  color: var(--light);
+}
+.body-theme-dark {
+  /* background-color: #1f1f1f !important; */
+  background-color: #211a1a  !important;
+  color: var(--light);
+}
+.body-theme-light {
+  background-color: var(--BG-light) !important;
+}
+
+/* end  toggle theme */
+
+/* start scroll bar */
+::-webkit-scrollbar {
+  width: 4px !important;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change to desired thumb color */
+}
+
+*::-webkit-scrollbar {
+  width: 4px; /* Adjust the width as desired */
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Change to desired background color */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change to desired thumb color */
+}
+/* end scroll bar */
+
+* {
+  box-sizing: border-box;
+}
+
+/* start  handle tajwal font */
+
+@font-face {
+  font-family: "tajwal";
+  src: url("../../Tajawal-font/Tajawal-Regular.ttf") format("truetype");
+}
+body {
+  font-family: "tajwal" !important;
+}
+@layer base {
+  body {
+    @apply w-screen overflow-x-hidden;
+  }
+  .container-sidebar {
+    @apply fixed w-fit h-screen top-0 p-5 text-xs  z-20;
+  }
+  .container-sidebar .icon-sidebar {
+    @apply cursor-pointer hover:bg-gray-200;
+  }
+  .btn {
+    @apply py-2 px-8 bg-blue-600 hover:bg-blue-600/50 text-xl text-white rounded-full;
+  }
+  .title {
+    @apply text-3xl font-medium lg:text-5xl my-10  mr-4;
+  }
+  .selected-link {
+    @apply bg-activeLink;
+  }
+  .input-class {
+    @apply p-5 pr-12 rounded-xl min-w-[260px] w-full outline-none;
+  }
+}
+.input-icon {
+  @apply absolute right-2 top-1/2 -translate-y-1/2 text-dark;
+}
+.form-btn {
+  @apply bg-purple p-3 rounded-xl text-white font-semibold;
+}
+.form-btn:hover {
+  @apply bg-gradient-to-tr from-[#794cc2] to-purple;
+}
+.as-link {
+  @apply hover:text-blue-400 hover:underline w-fit mx-auto;
+}
+/* start  hero section home */
+.bg-hero-home {
+  background-image: url("../images/heroImg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/* end  hero section home */
+/* start  hero section about us */
+.bg-hero-about {
+  background-image: url("/images/heroSectionAbout.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/* end  hero section about us */
+
+/* start animation */
+@keyframes decrease {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: calc(100% - 2 * 236px);
+  }
+}
+
+.reducing-size-navbar {
+  position: sticky;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  top: 0;
+  z-index: 10;
+  animation: decrease forwards ease-in-out 2s;
+}
+@keyframes increase {
+  0% {
+    width: calc(100% - 2 * 236px);
+  }
+  100% {
+    width: 100%;
+  }
+}
+.expainsion-size-navbar {
+  animation: increase forwards ease-in-out 2s;
+}
+@media screen and (min-width: 280px) and (max-width: 1280px) {
+  .reducing-size-navbar,
+  .expainsion-size-navbar {
+    animation: none;
+  }
+}
+/* end animation */
+
+/* start grid classes */
+.grid-col-x-1fr-x {
+  grid-template-columns: 236px 1fr 236px;
+}
+.grid-row-x-1fr {
+  grid-template-rows: 48px 1fr;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-col-x-1fr-x {
+    grid-template-columns: 100%;
+  }
+  .grid-row-x-1fr {
+    grid-template-rows: 48px auto auto;
+  }
+}
+/* end grid classes */
