@@ -11,7 +11,7 @@ export default function page() {
         description={
           "شريكك في رحلة النجاح شريكك في رحلة النجاح شريكك في رحلة النجاح"
         }
-        color={"acadimy"}
+        color={"academy"}
       />
     </section>
   );

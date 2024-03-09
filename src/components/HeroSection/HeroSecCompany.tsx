@@ -35,8 +35,8 @@ function HeroSecCompany({
               ? "text-media"
               : color === "event"
               ? "text-event"
-              : color === "acadimy"
-              ? "text-acadimy"
+              : color === "academy"
+              ? "text-academy"
               : "text-temkeen"
           } font-bold`}
         >

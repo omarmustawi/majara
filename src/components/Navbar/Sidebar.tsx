@@ -4,48 +4,9 @@ import { RiSearchEyeLine } from "react-icons/ri";
 import { BsMoonStars } from "react-icons/bs";
 import { GoSun } from "react-icons/go";
 import { useTheme } from "@/contexts/ThemeContext";
-import logo from "@/images/logo.svg";
-import { CgMenuGridO } from "react-icons/cg";
-import { IoIosPeople } from "react-icons/io";
-import { TbStarFilled } from "react-icons/tb";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import { BsPerson } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
 import { useIsOpenSidebarSecond } from "@/contexts/IsOpenSidebarSecond";
-import Image from "next/image";
-
-const icons = [
-  {
-    icon: <Image className="icon-sidebar w-8 h-8" src={logo} alt="مجرة" width={1000} height={1000} />,
-    name: "home",
-  },
-  {
-    icon: <CgMenuGridO size={30} className="icon-sidebar" />,
-    name: "خدماتنا",
-  },
-  {
-    icon: <IoIosPeople size={30} className="icon-sidebar" />,
-    name: "عنا",
-  },
-  {
-    icon: <TbStarFilled size={30} className="icon-sidebar" />,
-    name: "المدونة",
-  },
-  {
-    icon: <IoChatbubbleEllipsesOutline size={30} className="icon-sidebar" />,
-    name: "اتصل بنا",
-  },
-  {
-    icon: <BsPerson size={30} className="icon-sidebar" />,
-    name: "حسابي",
-  },
-  {
-    icon: <FaHeart size={30} className="icon-sidebar" />,
-    name: "مفضلتي",
-  },
-];
-
-const sidebarSec = ["مجرة ايجنسي", "مجرة ايفينت", "مجرة اكاديمي", "مجرة ميديا"];
+import { icons, sidebarSec } from "@/data/dataSidebar";
+import Link from "next/link";
 
 export default function Sidebar() {
   const { theme, toggleTheme } = useTheme();
@@ -60,23 +21,24 @@ export default function Sidebar() {
         </div>
         <div className="">
           {icons.map((icon, index) => (
-            <div
+            <Link
               key={index}
+              href={icon.link}
               className=" my-5 cursor-pointer flex flex-col justify-center items-center group"
               onClick={() =>
-                index === 0 && setIsOpenSidebarSecond(!IsOpenSidebarSecond)
+                index === 1 && setIsOpenSidebarSecond(!IsOpenSidebarSecond)
               }
             >
               <div
                 onClick={() => setSelectedIndex(index)}
                 className={`${
                   selectedIndex === index && "selected-link text-dark"
-                } px-3 py-1 mx-auto group-hover:bg-gray-200 group-hover:text-dark w-fit h-fit rounded-2xl `}
+                } px-3 py-1 mx-auto group-hover:bg-gray-200 group-hover:text-dark w-fit h-fit rounded-2xl`}
               >
                 {icon.icon}
               </div>
-              <span className=""> {icon.name} </span>
-            </div>
+              <span> {icon.name} </span>
+            </Link>
           ))}
         </div>
         <div
@@ -87,17 +49,18 @@ export default function Sidebar() {
         </div>
       </section>
       <section
-        className={`fixed  top-0  left-[78px] h-full  w-[200px] text-right text-lg text-gray-900 ${
+        className={`fixed  top-0  left-[96px] h-full  w-[140px] text-right text-lg text-gray-900 ${
           IsOpenSidebarSecond ? "translate-x-0" : "-translate-x-full "
-        }  transition-all ease-in-out duration-[1s]  shadow-2xl  py-5 px-2 theme-${theme}   z-10`}
+        }  transition-all ease-in-out duration-[1s]  shadow-2xl  py-5 px-2 theme-${theme} z-10`}
       >
         {sidebarSec.map((ele, index) => (
-          <div
+          <Link
             key={index}
-            className="my-6 cursor-pointer hover:bg-gray-200 hover:text-dark rounded-full px-3 py-1"
+            href={ele.link}
+            className="my-6 cursor-pointer block hover:bg-gray-200 hover:text-dark rounded-xl px-3 py-1"
           >
-            {ele}
-          </div>
+            {ele.title}
+          </Link>
         ))}
       </section>
     </>

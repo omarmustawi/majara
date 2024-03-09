@@ -12,7 +12,7 @@ export default function Topbar() {
   const { IsOpenContact, setIsOpenContact } = useIsOpenContact();
   return (
     <section
-      className={`p-5 theme-${theme}  z-10 shadow-sm fixed top-0 left-0 right-0 flex justify-between`}
+      className={`p-5 theme-${theme}  z-20 shadow-sm fixed top-0 left-0 right-0 flex justify-between`}
     >
       <div
         className="hover:bg-gray-200 hover:text-dark p-2 rounded-full"

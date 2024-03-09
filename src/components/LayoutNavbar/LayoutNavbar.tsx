@@ -32,7 +32,7 @@ export default function LayoutNavbar({
     return <LoaderSpinner />;
   }
   return (
-    <div className="w-full h-full">
+    <div className={`w-full h-full bg-${theme}`}>
       <main className={`relative bg-inherit`}>
         <section className={`bg-inherit relative w-screen`}>
           {/* {width > 900 && <Sidebar />}
@@ -52,14 +52,13 @@ export default function LayoutNavbar({
           )}
           <div
             dir="rtl"
-            className={` body-theme-${theme} h-fit  absolute ${
-              IsOpenSidebarSecond && width > 1024 && "w-[calc(100vw-278px)]"
+            className={`body-theme-${theme} h-fit absolute ${
+              IsOpenSidebarSecond && width > 1024 && "w-[calc(100vw-236px)]"
             } ${
               !IsOpenSidebarSecond && width > 1024 && "w-[calc(100vw-96px)]"
             } ${
               width > 1024 ? "top-0" : "top-[91px] w-full"
             } top-0 right-0 transition-all ease-in-out  duration-[1s] `}
-            // className={` body-theme-${theme} h-fit  absolute ${IsOpenSidebarSecond && "w-[calc(100vw-278px)]"} top-0 right-0 transition-all ease-in-out  duration-[1s] `}
           >
             {children}
           </div>

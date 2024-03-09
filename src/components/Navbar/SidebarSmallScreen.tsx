@@ -4,49 +4,11 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { BsMoonStars } from "react-icons/bs";
 import { GoSun } from "react-icons/go";
 import { MdMenuOpen } from "react-icons/md";
-import { CgMenuGridO } from "react-icons/cg";
 import { GoArrowRight } from "react-icons/go";
-import { IoIosPeople } from "react-icons/io";
-import { TbStarFilled } from "react-icons/tb";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import { BsPerson } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
 import { useIsOpenSidebarSecond } from "@/contexts/IsOpenSidebarSecond";
 import { useState } from "react";
-import Image from "next/image";
-import logo from "@/images/logo.svg";
-
-const icons = [
-  {
-    icon: <Image className="icon-sidebar w-8 h-8" src={logo} alt="مجرة" width={1000} height={1000} />,
-    name: "home",
-  },
-  {
-    icon: <CgMenuGridO size={30} className="icon-sidebar" />,
-    name: "خدماتنا",
-  },
-  {
-    icon: <IoIosPeople size={30} className="icon-sidebar" />,
-    name: "عنا",
-  },
-  {
-    icon: <TbStarFilled size={30} className="icon-sidebar" />,
-    name: "المدونة",
-  },
-  {
-    icon: <IoChatbubbleEllipsesOutline size={30} className="icon-sidebar" />,
-    name: "اتصل بنا",
-  },
-  {
-    icon: <BsPerson size={30} className="icon-sidebar" />,
-    name: "حسابي",
-  },
-  {
-    icon: <FaHeart size={30} className="icon-sidebar" />,
-    name: "مفضلتي",
-  },
-];
-const sidebarSec = ["مجرة ايجنسي", "مجرة ايفينت", "مجرة اكاديمي", "مجرة ميديا"];
+import { icons, sidebarSec } from "@/data/dataSidebar";
+import Link from "next/link";
 
 export default function SidebarSmallScreen() {
   const { IsOpenContact, setIsOpenContact } = useIsOpenContact();
@@ -79,12 +41,13 @@ export default function SidebarSmallScreen() {
       )}
       {IsOpenSidebarSecond
         ? sidebarSec.map((element, index) => (
-            <div
+            <Link
+              href={element.link}
               key={index}
-              className="min-w-[250px] my-5 cursor-pointer   hover:bg-gray-200 hover:text-dark rounded-full p-2 text-right "
+              className="min-w-[250px] my-5 cursor-pointer block hover:bg-gray-200 hover:text-dark rounded-full p-2 text-right "
             >
-              {element}
-            </div>
+              {element.title}
+            </Link>
           ))
         : icons.map((element, index) => (
             <div
@@ -106,7 +69,7 @@ export default function SidebarSmallScreen() {
                 {element.icon}
               </div>
               <span> {element.name} </span>
-              { index === 0 && <GoArrowRight className="ml-auto" size={30} />}
+              {index === 0 && <GoArrowRight className="ml-auto" size={30} />}
             </div>
           ))}
       <div

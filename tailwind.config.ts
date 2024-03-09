@@ -22,7 +22,7 @@ const config: Config = {
         media: "#1C1C1C",
         event: "#6E6F72",
         temkeen: "#E3296E",
-        acadimy: "#542E90",
+        academy: "#542E90",
 
       },
     },
